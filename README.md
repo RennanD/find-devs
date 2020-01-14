@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="./assets/scan.svg" />
+    <img src="./assets/scan.svg" width="200px" />
 </h1>
 
 <h3 align="center">
