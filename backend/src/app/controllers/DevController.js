@@ -28,7 +28,7 @@ class DevController {
 
       const { name = login, avatar_url, bio } = response.data;
 
-      const dev = await Dev.create({
+      dev = await Dev.create({
         name,
         github_username,
         avatar_url,
