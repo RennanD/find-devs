@@ -1,11 +1,75 @@
-import React from "react";
+/* eslint-disable react/jsx-no-target-blank */
+import React, { useEffect, useState } from "react";
 
 import { Container } from "./styles";
+
+import api from "../../services/api";
 
 import Sidebar, { Block, Group } from "../../components/Sidebar";
 import Main, { DevItem, Info } from "../../components/Main";
 
 export default function Home() {
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [username, setUsername] = useState("");
+  const [techs, setTechs] = useState("");
+  const [devs, setDevs] = useState([]);
+
+  useEffect(() => {
+    function getLocation() {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const { latitude, longitude } = position.coords;
+
+          setLatitude(latitude);
+          setLongitude(longitude);
+        },
+        err => {
+          console.log(err);
+        },
+        {
+          timeout: 30000
+        }
+      );
+    }
+    getLocation();
+  }, []);
+
+  useEffect(() => {
+    async function loadDevs() {
+      const response = await api.get("/devs");
+
+      const data = response.data.map(dev => ({
+        ...dev,
+        techs: dev.techs.join(", ")
+      }));
+
+      setDevs(data);
+    }
+    loadDevs();
+  }, []);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const response = await api.post("/devs", {
+      github_username: username,
+      techs,
+      latitude,
+      longitude
+    });
+
+    const data = {
+      ...response.data,
+      techs: response.data.techs.join(", ")
+    };
+
+    setUsername("");
+    setTechs("");
+
+    setDevs([...devs, data]);
+  }
+
   return (
     <Container>
       <Sidebar>
@@ -18,91 +82,75 @@ export default function Home() {
               name="github_username"
               id="github_username"
               required
+              value={username}
+              onChange={e => setUsername(e.target.value)}
             />
           </Block>
 
           <Block>
             <label htmlFor="techs">Tecnologias</label>
-            <input type="text" name="techs" id="techs" required />
+            <input
+              type="text"
+              name="techs"
+              id="techs"
+              required
+              value={techs}
+              onChange={e => setTechs(e.target.value)}
+            />
           </Block>
 
           <Group>
             <Block>
               <label htmlFor="latitude">Latitude</label>
-              <input type="text" name="latitude" id="latitude" required />
+              <input
+                type="number"
+                name="latitude"
+                id="latitude"
+                required
+                value={latitude}
+                onChange={e => setLatitude(e.target.value)}
+              />
             </Block>
 
             <Block style={{ marginTop: 0 }}>
               <label htmlFor="longitude">Longitude</label>
-              <input type="text" name="longitude" id="longitude" required />
+              <input
+                type="number"
+                name="longitude"
+                id="longitude"
+                required
+                value={longitude}
+                onChange={e => setLongitude(e.target.value)}
+              />
             </Block>
           </Group>
 
-          <button type="submit">Salvar</button>
+          <button type="submit" onClick={handleSubmit}>
+            Salvar
+          </button>
         </form>
       </Sidebar>
 
       <Main>
         <ul>
-          <DevItem>
-            <header>
-              <img
-                src="https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
-                alt="Rennan Douglas"
-              />
-              <Info>
-                <strong>Rennan Douglas</strong>
-                <span>React Js, React Native, Node.js</span>
-              </Info>
-            </header>
-            <p>Hey guys, I'm a robot that codes like a human</p>
-            <a href="https://github.com/RennanD">Perfil</a>
-          </DevItem>
-
-          <DevItem>
-            <header>
-              <img
-                src="https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
-                alt="Rennan Douglas"
-              />
-              <Info>
-                <strong>Rennan Douglas</strong>
-                <span>React Js, React Native, Node.js</span>
-              </Info>
-            </header>
-            <p>Hey guys, I'm a robot that codes like a human</p>
-            <a href="https://github.com/RennanD">Perfil</a>
-          </DevItem>
-
-          <DevItem>
-            <header>
-              <img
-                src="https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
-                alt="Rennan Douglas"
-              />
-              <Info>
-                <strong>Rennan Douglas</strong>
-                <span>React Js, React Native, Node.js</span>
-              </Info>
-            </header>
-            <p>Hey guys, I'm a robot that codes like a human</p>
-            <a href="https://github.com/RennanD">Perfil</a>
-          </DevItem>
-
-          <DevItem>
-            <header>
-              <img
-                src="https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
-                alt="Rennan Douglas"
-              />
-              <Info>
-                <strong>Rennan Douglas</strong>
-                <span>React Js, React Native, Node.js</span>
-              </Info>
-            </header>
-            <p>Hey guys, I'm a robot that codes like a human</p>
-            <a href="https://github.com/RennanD">Perfil</a>
-          </DevItem>
+          {devs.map(dev => (
+            <DevItem key={dev._id}>
+              <header>
+                <img src={dev.avatar_url} alt={dev.name} />
+                <Info>
+                  <strong>{dev.name}</strong>
+                  <span>{dev.techs}</span>
+                </Info>
+              </header>
+              <p>{dev.bio}</p>
+              <a
+                href={`https://github.com/${dev.github_username}`}
+                target="_blank"
+              >
+                Perfil
+              </a>
+            </DevItem>
+          ))}
         </ul>
       </Main>
     </Container>

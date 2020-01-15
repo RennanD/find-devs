@@ -15,7 +15,7 @@ class DevController {
 
     let dev = await Dev.findOne({ github_username });
 
-    if (!devExists) {
+    if (!dev) {
       const response = await axios.get(
         `https://api.github.com/users/${github_username}`
       );
