@@ -11,7 +11,7 @@
 
 To use this app you need have, [Node.js](https://nodejs.org/en/) installed and/or [Yarn](https://yarnpkg.com/lang/en/) installed.
 
-# 💾 Backend
+# 💾 "Backend"
 
 <h1 align="center">
     <img src="./assets/api.svg" width="150px" />
@@ -41,7 +41,7 @@ $ npm dev
 
 Use the [this host](http://localhost:3001) to access the api routes.
 
-# 💻 Frontend
+# 💻 "Frontend"
 
 <h1 align="center">
     <img src="./assets/browser.svg" width="150px" />
