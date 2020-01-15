@@ -4,7 +4,7 @@
 
 <h3 align="center">
     "Find Dev", application made in week OmniStack 10, 
-    use technologies and geolocation to find some developers like you :)
+    use technologies and geolocation to find some developers like you :).
 </h3>
 
 # Usage
