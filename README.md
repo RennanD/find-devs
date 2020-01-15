@@ -68,7 +68,7 @@ $ npm dev
 ```
 
 <h1 align="center">
-    <img src="./assets/find-devs.gif" width="600px" />
+    <img src="./assets/find-devs.gif" width="800px" />
 </h1
 
 Use the [this host](http://localhost:3000) to testing aplication web.
