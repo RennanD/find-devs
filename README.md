@@ -11,11 +11,11 @@
 
 To use this app you need have, [Node.js](https://nodejs.org/en/) installed and/or [Yarn](https://yarnpkg.com/lang/en/) installed.
 
+# 💾 Backend
+
 <h1 align="center">
     <img src="./assets/api.svg" width="100px" />
 </h1>
-
-# 💾 Backend
 
 Backend has made in Node.Js, using [MongoDb](https://www.mongodb.com/) as your batabase.
 
@@ -41,11 +41,11 @@ $ npm dev
 
 Use the [this host](http://localhost:3001) to access the api routes.
 
-<h1 align="center">
-    <img src="./assets/browser.svg" width="100px" />
-</h1>
-
 # Frontend
+
+<h1 align="center">
+    <img src="./assets/browser.svg" width="150px" />
+</h1>
 
 Frontend has made in [React Js](https://pt-br.reactjs.org/), a lib powered by [Facebook](https://developers.facebook.com/?locale=pt_BR).
 
