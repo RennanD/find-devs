@@ -25,6 +25,10 @@ export default createGlobalStyle`
         font-family: 'Roboto', Arial, Helvetica, sans-serif; 
     }
 
+    ul {
+        list-style: none;
+    }
+
     
     *:focus {
         outline: 0;

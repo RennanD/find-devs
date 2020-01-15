@@ -37,6 +37,13 @@ const Sidebar = styled.aside`
       }
     }
   }
+
+  @media (max-width: 1000px) {
+    & {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
 `;
 
 export const Block = styled.div`

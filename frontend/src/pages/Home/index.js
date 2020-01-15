@@ -3,7 +3,7 @@ import React from "react";
 import { Container } from "./styles";
 
 import Sidebar, { Block, Group } from "../../components/Sidebar";
-import Main from "../../components/Main";
+import Main, { DevItem, Info } from "../../components/Main";
 
 export default function Home() {
   return (
@@ -41,7 +41,70 @@ export default function Home() {
           <button type="submit">Salvar</button>
         </form>
       </Sidebar>
-      <Main></Main>
+
+      <Main>
+        <ul>
+          <DevItem>
+            <header>
+              <img
+                src="https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
+                alt="Rennan Douglas"
+              />
+              <Info>
+                <strong>Rennan Douglas</strong>
+                <span>React Js, React Native, Node.js</span>
+              </Info>
+            </header>
+            <p>Hey guys, I'm a robot that codes like a human</p>
+            <a href="https://github.com/RennanD">Perfil</a>
+          </DevItem>
+
+          <DevItem>
+            <header>
+              <img
+                src="https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
+                alt="Rennan Douglas"
+              />
+              <Info>
+                <strong>Rennan Douglas</strong>
+                <span>React Js, React Native, Node.js</span>
+              </Info>
+            </header>
+            <p>Hey guys, I'm a robot that codes like a human</p>
+            <a href="https://github.com/RennanD">Perfil</a>
+          </DevItem>
+
+          <DevItem>
+            <header>
+              <img
+                src="https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
+                alt="Rennan Douglas"
+              />
+              <Info>
+                <strong>Rennan Douglas</strong>
+                <span>React Js, React Native, Node.js</span>
+              </Info>
+            </header>
+            <p>Hey guys, I'm a robot that codes like a human</p>
+            <a href="https://github.com/RennanD">Perfil</a>
+          </DevItem>
+
+          <DevItem>
+            <header>
+              <img
+                src="https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
+                alt="Rennan Douglas"
+              />
+              <Info>
+                <strong>Rennan Douglas</strong>
+                <span>React Js, React Native, Node.js</span>
+              </Info>
+            </header>
+            <p>Hey guys, I'm a robot that codes like a human</p>
+            <a href="https://github.com/RennanD">Perfil</a>
+          </DevItem>
+        </ul>
+      </Main>
     </Container>
   );
 }
