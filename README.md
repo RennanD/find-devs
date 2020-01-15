@@ -41,7 +41,7 @@ $ npm dev
 
 Use the [this host](http://localhost:3001) to access the api routes.
 
-# Frontend
+# 💻 Frontend
 
 <h1 align="center">
     <img src="./assets/browser.svg" width="150px" />
