@@ -14,7 +14,7 @@ To use this app you need have, [Node.js](https://nodejs.org/en/) installed and/o
 # 💾 Backend
 
 <h1 align="center">
-    <img src="./assets/api.svg" width="100px" />
+    <img src="./assets/api.svg" width="150px" />
 </h1>
 
 Backend has made in Node.Js, using [MongoDb](https://www.mongodb.com/) as your batabase.
