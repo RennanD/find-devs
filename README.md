@@ -67,4 +67,8 @@ $ npm install
 $ npm dev
 ```
 
+<h1 align="center">
+    <img src="./assets/find-devs.gif" width="450" />
+</h1
+
 Use the [this host](http://localhost:3000) to testing aplication web.
