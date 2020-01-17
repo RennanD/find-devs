@@ -54,17 +54,17 @@ Frontend has made in [React Js](https://pt-br.reactjs.org/), a lib powered by [F
 To init frontend, run:
 
 ```bash
-$ cd backend
+$ cd frontend
 $ yarn install
-$ yarn dev
+$ yarn start
 ```
 
 or using npm :
 
 ```bash
-$ cd backend
+$ cd frontend
 $ npm install
-$ npm dev
+$ npm start
 ```
 
 <h1 align="center">
