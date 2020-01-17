@@ -67,6 +67,8 @@ $ npm install
 $ npm start
 ```
 
+#### Demo
+
 <h1 align="center">
     <img src="./assets/find-devs.gif" width="800px" />
 </h1
@@ -103,6 +105,14 @@ $ cd mobile
 $ npm install
 $ npm start
 ```
+
+Now a screen like this will appear, scan the QR code using expo installed in your smartphone.
+
+<h1 align="center">
+    <img src="./assets/expo.png" height="600px" />
+</h1
+
+#### Demo
 
 <h1 align="center">
     <img src="./assets/mobile.gif" height="600px" />
