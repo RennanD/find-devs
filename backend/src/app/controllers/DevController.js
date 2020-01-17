@@ -26,10 +26,10 @@ class DevController {
       };
       const devTechs = parseArray(techs);
 
-      const { name = login, avatar_url, bio } = response.data;
+      const { name, login, avatar_url, bio } = response.data;
 
       dev = await Dev.create({
-        name,
+        name: name ? name : login,
         github_username,
         avatar_url,
         bio,
