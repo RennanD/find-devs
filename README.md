@@ -109,7 +109,7 @@ $ npm start
 Now a screen like this will appear, scan the QR code using expo installed in your smartphone.
 
 <h1 align="center">
-    <img src="./assets/expo.png" width="300px" />
+    <img src="./assets/expo.png" width="400px" />
 </h1
 
 #### Demo
