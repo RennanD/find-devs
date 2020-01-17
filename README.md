@@ -72,3 +72,38 @@ $ npm start
 </h1
 
 Use the [this host](http://localhost:3000) to testing aplication web.
+
+# 📱 "Mobile"
+
+<h1 align="center">
+    <img src="./assets/smartphone.svg" width="150px" />
+</h1>
+
+App mobile has made in [React Native](https://facebook.github.io/react-native/), a lib powered by [Facebook](https://developers.facebook.com/?locale=pt_BR).
+
+### Usage
+
+To runing this app, you need have installed the [Expo](https://expo.io/learn) in your smartphone
+and [Expo-cli](https://docs.expo.io/versions/latest/get-started/installation/) installed in your computer.
+
+### ⚡️ Start
+
+With expo installed, run:
+
+```bash
+$ cd mobile
+$ yarn install
+$ yarn start
+```
+
+or using npm :
+
+```bash
+$ cd mobile
+$ npm install
+$ npm start
+```
+
+<h1 align="center">
+    <img src="./assets/mobile.gif" height="600px" />
+</h1
