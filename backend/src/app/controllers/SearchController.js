@@ -7,6 +7,8 @@ class SearchController {
 
     const searchTechs = parseArray(techs);
 
+    console.log(searchTechs);
+
     const devs = await Dev.find({
       techs: {
         $in: searchTechs

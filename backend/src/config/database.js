@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://localhost:27017/omnistack", {
+mongoose.connect("mongodb://localhost:27017/tes", {
   useFindAndModify: true,
   useNewUrlParser: true,
   useUnifiedTopology: true

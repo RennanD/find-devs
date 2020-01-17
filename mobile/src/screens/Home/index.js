@@ -8,6 +8,8 @@ import {
   getCurrentPositionAsync
 } from "expo-location";
 
+import api from "../../services/api";
+
 import {
   Container,
   Avatar,
@@ -22,6 +24,8 @@ import {
 
 export default function Home({ navigation }) {
   const [currentRegion, setCurremtRegion] = useState(null);
+  const [techs, setTechs] = useState("");
+  const [devs, setDevs] = useState([]);
 
   useEffect(() => {
     async function loadInitialPosition() {
@@ -45,44 +49,76 @@ export default function Home({ navigation }) {
     loadInitialPosition();
   }, []);
 
+  async function loadDevs() {
+    const { latitude, longitude } = currentRegion;
+
+    const response = await api.get("/search", {
+      params: {
+        latitude,
+        longitude,
+        techs
+      }
+    });
+    const data = response.data.map(dev => ({
+      ...dev,
+      techs: dev.techs.join(", ")
+    }));
+
+    setDevs(data);
+  }
+
+  function handleRegionChanged(rergion) {
+    setCurremtRegion(rergion);
+  }
+
   if (!currentRegion) {
     return null;
   }
 
   return (
     <>
-      <Container initialRegion={currentRegion}>
-        <Marker
-          coordinate={{
-            latitude: currentRegion.latitude,
-            longitude: currentRegion.longitude
-          }}
-        >
-          <Avatar
-            source={{
-              uri: "https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
+      <Container
+        onRegionChangeComplete={handleRegionChanged}
+        initialRegion={currentRegion}
+      >
+        {devs.map(dev => (
+          <Marker
+            key={dev._id}
+            coordinate={{
+              longitude: dev.location.coordinates[0],
+              latitude: dev.location.coordinates[1]
             }}
-          />
-          <Callout
-            onPress={() =>
-              navigation.navigate("Profile", { github_username: "rennand" })
-            }
           >
-            <Content>
-              <Name>Rennan Douglas</Name>
-              <Bio>Hey guys, I'm a robot that codes like a human</Bio>
-              <Techs>React Native, React Js, Node.js</Techs>
-            </Content>
-          </Callout>
-        </Marker>
+            <Avatar
+              source={{
+                uri: dev.avatar_url
+              }}
+            />
+            <Callout
+              onPress={() =>
+                navigation.navigate("Profile", {
+                  github_username: DeviceLightEvent.github_username
+                })
+              }
+            >
+              <Content>
+                <Name>{dev.name}</Name>
+                <Bio>{dev.bio}</Bio>
+                <Techs>{dev.techs}</Techs>
+              </Content>
+            </Callout>
+          </Marker>
+        ))}
       </Container>
       <SearchForm>
         <FormInput
           placeholder="Buscar devs por techs..."
           autoCapitalize="words"
           autoCorrect={false}
+          value={techs}
+          onChangeText={setTechs}
         />
-        <FloatButton>
+        <FloatButton onPress={loadDevs}>
           <MaterialIcons name="my-location" size={20} color="#FFF" />
         </FloatButton>
       </SearchForm>

@@ -35,7 +35,7 @@ export const SearchForm = styled.View.attrs({
   placeholderTextColor: "#999"
 })`
   position: absolute;
-  bottom: 20px;
+  top: 20px;
   left: 20px;
   right: 20px;
   z-index: 5;
