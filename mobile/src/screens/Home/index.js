@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
 
 import { Marker, Callout } from "react-native-maps";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import {
   requestPermissionsAsync,
   getCurrentPositionAsync
 } from "expo-location";
 
-import { Container, Avatar, Name, Content, Bio, Techs } from "./styles";
+import {
+  Container,
+  Avatar,
+  Name,
+  Content,
+  Bio,
+  Techs,
+  FormInput,
+  SearchForm,
+  FloatButton
+} from "./styles";
 
-export default function Home() {
+export default function Home({ navigation }) {
   const [currentRegion, setCurremtRegion] = useState(null);
 
   useEffect(() => {
@@ -39,27 +50,43 @@ export default function Home() {
   }
 
   return (
-    <Container initialRegion={currentRegion}>
-      <Marker
-        coordinate={{
-          latitude: currentRegion.latitude,
-          longitude: currentRegion.longitude
-        }}
-      >
-        <Avatar
-          source={{
-            uri: "https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
+    <>
+      <Container initialRegion={currentRegion}>
+        <Marker
+          coordinate={{
+            latitude: currentRegion.latitude,
+            longitude: currentRegion.longitude
           }}
+        >
+          <Avatar
+            source={{
+              uri: "https://avatars3.githubusercontent.com/u/15038553?s=460&v=4"
+            }}
+          />
+          <Callout
+            onPress={() =>
+              navigation.navigate("Profile", { github_username: "rennand" })
+            }
+          >
+            <Content>
+              <Name>Rennan Douglas</Name>
+              <Bio>Hey guys, I'm a robot that codes like a human</Bio>
+              <Techs>React Native, React Js, Node.js</Techs>
+            </Content>
+          </Callout>
+        </Marker>
+      </Container>
+      <SearchForm>
+        <FormInput
+          placeholder="Buscar devs por techs..."
+          autoCapitalize="words"
+          autoCorrect={false}
         />
-        <Callout>
-          <Content>
-            <Name>Rennan Douglas</Name>
-            <Bio>Hey guys, I'm a robot that codes like a human</Bio>
-            <Techs>React Native, React Js, Node.js</Techs>
-          </Content>
-        </Callout>
-      </Marker>
-    </Container>
+        <FloatButton>
+          <MaterialIcons name="my-location" size={20} color="#FFF" />
+        </FloatButton>
+      </SearchForm>
+    </>
   );
 }
 

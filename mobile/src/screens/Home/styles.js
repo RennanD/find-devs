@@ -30,3 +30,35 @@ export const Bio = styled.Text`
 export const Techs = styled.Text`
   margin-top: 5px;
 `;
+
+export const SearchForm = styled.View.attrs({
+  placeholderTextColor: "#999"
+})`
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 5;
+  flex-direction: row;
+  align-items: center;
+  elevation: 2;
+`;
+
+export const FormInput = styled.TextInput`
+  flex: 1;
+  height: 50px;
+  background: #fff;
+  color: #333;
+  border-radius: 15px;
+  padding: 0 20px;
+`;
+
+export const FloatButton = styled.TouchableOpacity`
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background: #7159c1;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+`;
