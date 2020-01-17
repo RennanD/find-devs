@@ -47,7 +47,7 @@ Use the [this host](http://localhost:3001) to access the api routes.
     <img src="./assets/browser.svg" width="150px" />
 </h1>
 
-Frontend has made in [React Js](https://pt-br.reactjs.org/), a lib powered by [Facebook](https://developers.facebook.com/?locale=pt_BR).
+Frontend has be made in [React Js](https://pt-br.reactjs.org/), a lib powered by [Facebook](https://developers.facebook.com/?locale=pt_BR).
 
 ### ⚡️ Start
 
@@ -79,7 +79,7 @@ Use the [this host](http://localhost:3000) to testing aplication web.
     <img src="./assets/smartphone.svg" width="150px" />
 </h1>
 
-App mobile has made in [React Native](https://facebook.github.io/react-native/), a lib powered by [Facebook](https://developers.facebook.com/?locale=pt_BR).
+App mobile has be made in [React Native](https://facebook.github.io/react-native/), a lib powered by [Facebook](https://developers.facebook.com/?locale=pt_BR).
 
 ### Usage
 
