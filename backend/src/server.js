@@ -1,3 +1,8 @@
 import app from "./app";
+import http from "http";
+import { setupSocket } from "./websocket";
 
-app.listen(3001);
+const server = http.Server(app);
+setupSocket(server);
+
+server.listen(3001);

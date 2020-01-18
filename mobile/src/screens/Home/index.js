@@ -9,6 +9,11 @@ import {
 } from "expo-location";
 
 import api from "../../services/api";
+import {
+  connect,
+  disconnect,
+  subscribeNewDev
+} from "../../services/websockets";
 
 import {
   Container,
@@ -49,6 +54,18 @@ export default function Home({ navigation }) {
     loadInitialPosition();
   }, []);
 
+  useEffect(() => {
+    subscribeNewDev(dev => setDevs([...devs, dev]));
+  }, [devs]);
+
+  function setupSocket() {
+    disconnect();
+
+    const { latitude, longitude } = currentRegion;
+
+    connect(latitude, longitude, techs);
+  }
+
   async function loadDevs() {
     const { latitude, longitude } = currentRegion;
 
@@ -65,6 +82,7 @@ export default function Home({ navigation }) {
     }));
 
     setDevs(data);
+    setupSocket();
   }
 
   function handleRegionChanged(rergion) {
