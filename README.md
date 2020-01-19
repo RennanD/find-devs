@@ -7,6 +7,16 @@
     use technologies and geolocation to find some developers like you :).
 </h3>
 
+# About this project
+
+<h1 align="center">
+    The purpose of this application is to search for developers close to you, so that coworkings can be made, exchange ideas and etc.
+</h1>
+
+<h2 align="center">
+    A complete application using Node.js with Sucrase for the backend, React js and React Native for the frontend applications, and the webscoket protocol, for real-time communication, using socket.io
+</h2>
+
 # Usage
 
 To use this app you need have, [Node.js](https://nodejs.org/en/) installed and/or [Yarn](https://yarnpkg.com/lang/en/) installed.
@@ -115,5 +125,5 @@ Now a screen like this will appear, scan the QR code using expo installed in you
 #### Demo
 
 <h1 align="center">
-    <img src="./assets/mobile.gif" height="600px" />
+    <img src="./assets/find-devs-mobile.gif" height="600px" />
 </h1

@@ -7,8 +7,6 @@ class SearchController {
 
     const searchTechs = parseArray(techs);
 
-    console.log(searchTechs);
-
     const devs = await Dev.find({
       techs: {
         $in: searchTechs
@@ -23,6 +21,10 @@ class SearchController {
         }
       }
     });
+
+    if (!devs.length)
+      return res.status(404).json({ error: "Nenhum Dev encontrado." });
+
     return res.json(devs);
   }
 }

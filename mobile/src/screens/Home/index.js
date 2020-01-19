@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { Alert } from "react-native";
+
 import { Marker, Callout } from "react-native-maps";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -69,20 +71,24 @@ export default function Home({ navigation }) {
   async function loadDevs() {
     const { latitude, longitude } = currentRegion;
 
-    const response = await api.get("/search", {
-      params: {
-        latitude,
-        longitude,
-        techs
-      }
-    });
-    const data = response.data.map(dev => ({
-      ...dev,
-      techs: dev.techs.join(", ")
-    }));
+    try {
+      const response = await api.get("/search", {
+        params: {
+          latitude,
+          longitude,
+          techs
+        }
+      });
+      const data = response.data.map(dev => ({
+        ...dev,
+        techs: dev.techs.join(", ")
+      }));
 
-    setDevs(data);
-    setupSocket();
+      setDevs(data);
+      setupSocket();
+    } catch ({ response }) {
+      Alert.alert("Erro.", response.data.error);
+    }
   }
 
   function handleRegionChanged(rergion) {
@@ -115,7 +121,7 @@ export default function Home({ navigation }) {
             <Callout
               onPress={() =>
                 navigation.navigate("Profile", {
-                  github_username: DeviceLightEvent.github_username
+                  github_username: dev.github_username
                 })
               }
             >
